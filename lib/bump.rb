@@ -84,14 +84,14 @@ module Bump
     end
 
     def self.commit_message(version, options)
-      (options[:commit_message]) ? "v#{version} #{options[:commit_message]}" : "v#{version}"
+      (options[:commit_message]) ? "Bump to version #{version} #{options[:commit_message]}" : "Bump to version #{version}."
     end
 
     def self.commit(version, file, options)
       return unless File.directory?(".git")
       system("git add --update Gemfile.lock") if options[:bundle]
       system("git add --update #{file} && git commit -m '#{commit_message(version, options)}'")
-      system("git tag -a -m 'Bump to v#{version}' v#{version}") if options[:tag]
+      system("git tag -a -m 'Bump to #{version}' #{version}") if options[:tag]
     end
 
     def self.replace(file, old, new)

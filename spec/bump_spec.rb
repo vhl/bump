@@ -41,7 +41,7 @@ describe Bump do
 
       bump("patch")
 
-      `git log -1 --pretty=format:'%s'`.should == "v4.2.4"
+      `git log -1 --pretty=format:'%s'`.should == "Bump to version 4.2.4."
       `git status`.should include "nothing to commit"
     end
 
@@ -68,7 +68,7 @@ describe Bump do
       write_gemspec
 
       bump("patch --tag")
-      `git tag -l`.should include 'v4.2.4'
+      `git tag -l`.should include '4.2.4'
     end
 
     it "should not tag the version if --no-commit and --tag flag given" do

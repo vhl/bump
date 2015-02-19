@@ -13,14 +13,14 @@ describe "rake bump" do
     output = run "rake bump:minor"
     output.should include("1.3.0")
     read("VERSION").should == "1.3.0\n"
-    `git log -1 --pretty=format:'%s'`.should == "v1.3.0"
+    `git log -1 --pretty=format:'%s'`.should == "Bump to version 1.3.0."
   end
 
   it "sets a version" do
     output = run "VERSION=1.3.0 rake bump:set"
     output.should include("1.3.0")
     read("VERSION").should == "1.3.0\n"
-    `git log -1 --pretty=format:'%s'`.should == "v1.3.0"
+    `git log -1 --pretty=format:'%s'`.should == "Bump to version 1.3.0."
   end
 
   it "fails when it cannot bump" do
